@@ -84,6 +84,7 @@ class LoginActivity : AppCompatActivity() {
             val uri = Uri.parse(url)
             if (url.contains("code")) {
                 val githubCode = uri.getQueryParameter("code") ?: ""
+                viewModel.getAccessToken(code = githubCode )
                 //requestForAccessToken(githubCode)
             }
         }

@@ -1,4 +1,4 @@
-package com.example.reposearch
+package com.example.reposearch.network
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

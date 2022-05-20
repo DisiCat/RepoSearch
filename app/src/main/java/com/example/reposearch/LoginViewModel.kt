@@ -11,7 +11,9 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor() : ViewModel() {
+class LoginViewModel @Inject constructor(
+    private val loginUseCase: ILoginUseCase
+) : ViewModel() {
 
     private val state = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())
     val githubAuthURLFull =
@@ -23,7 +25,7 @@ class LoginViewModel @Inject constructor() : ViewModel() {
 
     fun getAccessToken(code: String){
         viewModelScope.launch {
-            _accessToken.value = // get token
+            loginUseCase.getAccessToken(code)
         }
     }
 }
