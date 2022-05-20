@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RepoSearch</string>
+    <string name="button_login_git">Log in with GitHub</string>
+</resources>

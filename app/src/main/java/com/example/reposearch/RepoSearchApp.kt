@@ -1,4 +1,8 @@
 package com.example.reposearch
 
-class RepoSearchApp {
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
+
+@HiltAndroidApp
+class RepoSearchApp : Application() {
 }
