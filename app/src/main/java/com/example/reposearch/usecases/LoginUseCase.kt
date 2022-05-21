@@ -1,7 +1,6 @@
-package com.example.reposearch
+package com.example.reposearch.usecases
 
-import com.example.reposearch.enums.EResultType
-import kotlinx.coroutines.flow.Flow
+import com.example.reposearch.repository.ILoginRepository
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(

@@ -3,6 +3,7 @@ package com.example.reposearch
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.Dialog
+import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import android.webkit.WebViewClient
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.reposearch.databinding.ActivityLoginBinding
+import com.example.reposearch.enums.EResultType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.lifecycleOwner = this
         initListeners()
+        initObserves()
     }
 
     private fun initListeners() {
@@ -84,8 +87,21 @@ class LoginActivity : AppCompatActivity() {
             val uri = Uri.parse(url)
             if (url.contains("code")) {
                 val githubCode = uri.getQueryParameter("code") ?: ""
-                viewModel.getAccessToken(code = githubCode )
+                viewModel.getAccessToken(code = githubCode)
                 //requestForAccessToken(githubCode)
+            }
+        }
+    }
+
+    private fun initObserves() {
+        viewModel.resultType.observe(this) {
+            if (it == EResultType.SUCCESS) {
+                // go to activity
+                val intent = Intent(this, SearchActivity::class.java)
+                startActivity(intent)
+
+            } else if (it == EResultType.ERROR) {
+                // error
             }
         }
     }
