@@ -1,4 +1,4 @@
-package com.example.reposearch.usecases.observerUseCases
+package com.example.reposearch.usecases.interfaces
 
 import com.example.reposearch.enums.EResultType
 import kotlinx.coroutines.flow.Flow

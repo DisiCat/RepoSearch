@@ -1,9 +1,7 @@
 package com.example.reposearch.usecases.observerUseCases
 
-import com.example.reposearch.enums.EResultType
-import com.example.reposearch.repository.ILoginRepository
-import com.example.reposearch.repository.LoginRepository
-import kotlinx.coroutines.flow.Flow
+import com.example.reposearch.repository.interfaces.ILoginRepository
+import com.example.reposearch.usecases.interfaces.ILoginObserverUseCase
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 

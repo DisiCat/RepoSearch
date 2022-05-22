@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey_click_color">#222222</color>
     <color name="background_color">#04050E</color>
+
+
+    <color name="grey_color">#8383B9</color>
 </resources>

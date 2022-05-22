@@ -1,9 +1,11 @@
 package com.example.reposearch.repository
 
 import com.example.reposearch.AppDefaultValues
+import com.example.reposearch.data.AccessToken
 import com.example.reposearch.enums.EResultType
 import com.example.reposearch.localapi.ILoginLocalApi
 import com.example.reposearch.network.RestApiService
+import com.example.reposearch.repository.interfaces.ILoginRepository
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -27,7 +29,10 @@ class LoginRepository @Inject constructor(
                 AppDefaultValues.CLIENT_SECRET,
                 code
             )
-            loginLocalApi.saveToken(accessToken)
+            if (accessToken.isSuccessful) {
+                loginLocalApi.saveToken(accessToken.body() ?: AccessToken(""))
+
+            }
 
             _msgToken.emit(EResultType.SUCCESS)
 

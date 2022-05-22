@@ -1,6 +1,7 @@
 package com.example.reposearch.usecases
 
-import com.example.reposearch.repository.ILoginRepository
+import com.example.reposearch.repository.interfaces.ILoginRepository
+import com.example.reposearch.usecases.interfaces.ILoginUseCase
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(

@@ -1,4 +1,4 @@
-package com.example.reposearch.repository
+package com.example.reposearch.repository.interfaces
 
 import com.example.reposearch.enums.EResultType
 import kotlinx.coroutines.flow.Flow

@@ -15,6 +15,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.reposearch.databinding.ActivityLoginBinding
 import com.example.reposearch.enums.EResultType
+import com.example.reposearch.viewModels.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

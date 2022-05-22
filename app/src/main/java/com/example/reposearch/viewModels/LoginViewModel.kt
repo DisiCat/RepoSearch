@@ -1,14 +1,13 @@
-package com.example.reposearch
+package com.example.reposearch.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.reposearch.data.AccessToken
+import com.example.reposearch.AppDefaultValues
 import com.example.reposearch.enums.EResultType
-import com.example.reposearch.usecases.ILoginUseCase
-import com.example.reposearch.usecases.observerUseCases.ILoginObserverUseCase
-import com.example.reposearch.usecases.observerUseCases.LoginObserverUseCase
+import com.example.reposearch.usecases.interfaces.ILoginUseCase
+import com.example.reposearch.usecases.interfaces.ILoginObserverUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit

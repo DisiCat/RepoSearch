@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ASUS/Documents/RepoSearch/app/src/main/res/drawable/ic_search.xml" value="0.202" />
+        <entry key="..\:/Users/ASUS/Documents/RepoSearch/app/src/main/res/drawable/ic_search_close.xml" value="0.202" />
         <entry key="..\:/Users/ASUS/Documents/RepoSearch/app/src/main/res/drawable/rounded_corners.xml" value="0.212" />
         <entry key="..\:/Users/ASUS/Documents/RepoSearch/app/src/main/res/drawable/rounded_corners_black.xml" value="0.195" />
         <entry key="..\:/Users/ASUS/Documents/RepoSearch/app/src/main/res/layout/activity_login.xml" value="0.1" />
