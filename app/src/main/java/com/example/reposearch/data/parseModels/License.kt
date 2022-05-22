@@ -1,7 +1,9 @@
 package com.example.reposearch.data.parseModels
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class License(
 
     @Json(name = "key") var key: String? = null,

@@ -16,14 +16,12 @@
             android:id="@+id/profile_constLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:gravity="start"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:id="@+id/profile_layout"
@@ -32,13 +30,13 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/rounded_corners"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:orientation="horizontal"
+                android:padding="5dp">
 
                 <ImageView
                     android:id="@+id/ic_profile"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:src="@drawable/ic_github" />
@@ -47,7 +45,7 @@
                     android:id="@+id/profile_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Profile" />
+                    android:text="@string/profile" />
 
             </LinearLayout>
 
@@ -59,12 +57,12 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/rounded_corners"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:orientation="horizontal"
+                android:padding="5dp">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:src="@drawable/ic_history" />
@@ -72,36 +70,36 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View history" />
+                    android:text="@string/history" />
             </LinearLayout>
         </LinearLayout>
 
         <SearchView
-            android:iconifiedByDefault="false"
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:background="@drawable/rounded_corners"
             android:closeIcon="@drawable/ic_search_close"
+            android:iconifiedByDefault="false"
             android:maxWidth="1000dp"
             android:queryHint="@string/search"
             android:searchIcon="@drawable/ic_search"
             android:textAlignment="gravity"
             android:theme="@style/search"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_constLayout"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_constLayout" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchView"
+            tools:listitem="@layout/repository_item_layout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
