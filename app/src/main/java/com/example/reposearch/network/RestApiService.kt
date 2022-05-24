@@ -33,6 +33,7 @@ interface RestApiService {
         @Query("sort") sort: String,
         @Query("order") order: String,
         @Query("per_page") number_results : Int,
+        @Query("page") page : Int,
         @Query("q") q: String
     ): Response<Repositories>
 

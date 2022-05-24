@@ -1,4 +1,4 @@
-package com.example.reposearch
+package com.example.reposearch.activities
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
@@ -13,8 +13,11 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.example.reposearch.AppDefaultValues
+import com.example.reposearch.R
 import com.example.reposearch.databinding.ActivityLoginBinding
 import com.example.reposearch.enums.EResultType
+import com.example.reposearch.showSpinnerExtension
 import com.example.reposearch.viewModels.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -89,6 +92,7 @@ class LoginActivity : AppCompatActivity() {
             if (url.contains("code")) {
                 val githubCode = uri.getQueryParameter("code") ?: ""
                 viewModel.getAccessToken(code = githubCode)
+                binding.mainLayout.showSpinnerExtension()
                 //requestForAccessToken(githubCode)
             }
         }
@@ -98,6 +102,7 @@ class LoginActivity : AppCompatActivity() {
         viewModel.resultType.observe(this) {
             if (it == EResultType.SUCCESS) {
                 // go to activity
+                    
                 val intent = Intent(this, SearchActivity::class.java)
                 startActivity(intent)
 

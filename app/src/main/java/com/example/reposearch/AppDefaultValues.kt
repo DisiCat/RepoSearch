@@ -9,4 +9,5 @@ object AppDefaultValues {
     const val TOKEN_URL = "https://github.com/login/oauth/access_token"
     const val API_URL = "https://api.github.com/"
     const val REPO_URL = "https://api.github.com/search/repositories"
+    const val PAGE_COUNT = 15
 }

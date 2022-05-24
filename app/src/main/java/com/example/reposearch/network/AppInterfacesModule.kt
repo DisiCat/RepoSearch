@@ -40,4 +40,8 @@ abstract class AppInterfacesModule {
     //region LocalApi
     @Binds
     abstract fun bindLoginLocalApi(impl: LoginLocalApi): ILoginLocalApi
+
+    //requester
+    @Binds
+    abstract fun bindRepoRequester(impl: RepoRequester): IRepoRequester
 }
