@@ -6,6 +6,7 @@ import com.example.reposearch.data.parseModels.Items
 internal fun Items.toRepositoryModel(): RepositoryModel {
     return RepositoryModel(
         name = this.fullName ?: "",
-        star_count = stargazersCount ?: 0
+        star_count = stargazersCount ?: 0,
+        repo_url = htmlUrl?:"",
     )
 }

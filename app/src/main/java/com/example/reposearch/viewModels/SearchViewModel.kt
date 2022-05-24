@@ -3,10 +3,7 @@ package com.example.reposearch.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.PagingSource
+import androidx.paging.*
 import com.example.reposearch.data.RepositoryModel
 import com.example.reposearch.usecases.SearchUseCase
 import com.example.reposearch.usecases.interfaces.ISearchUseCase
@@ -26,7 +23,7 @@ class SearchViewModel @Inject constructor(
 
     val repositories: StateFlow<PagingData<RepositoryModel>> = repoName
         .map(::newPager)
-        .flatMapLatest { pager -> pager.flow }
+        .flatMapLatest { pager -> pager.flow }.cachedIn(viewModelScope)
         .stateIn(
             viewModelScope, SharingStarted.Lazily,
             PagingData.empty()

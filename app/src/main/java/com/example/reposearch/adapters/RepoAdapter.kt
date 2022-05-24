@@ -11,8 +11,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.reposearch.R
 import com.example.reposearch.data.RepositoryModel
 import com.example.reposearch.databinding.RepositoryItemLayoutBinding
+import com.example.reposearch.setSafeOnClickListener
 
-class RepoAdapter(context: Context) :
+class RepoAdapter( private val itemClickListener: (String?) -> Unit, context: Context) :
     PagingDataAdapter<RepositoryModel, RepoViewHolder>(RepositoryDiffItemCallback) {
 
     private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
@@ -26,7 +27,9 @@ class RepoAdapter(context: Context) :
     }
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
+        holder.itemView.setSafeOnClickListener { itemClickListener(getItem(position)?.repo_url) }
         holder.bind(getItem(position))
+
     }
 
 

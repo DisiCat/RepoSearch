@@ -6,17 +6,18 @@ import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.reposearch.AppDefaultValues
 import com.example.reposearch.R
 import com.example.reposearch.databinding.ActivityLoginBinding
 import com.example.reposearch.enums.EResultType
+import com.example.reposearch.setSafeOnClickListener
 import com.example.reposearch.showSpinnerExtension
 import com.example.reposearch.viewModels.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initListeners() {
-        binding.buttonLoginGithub.setOnClickListener {
+        binding.buttonLoginGithub.setSafeOnClickListener {
             setupGithubWebViewDialog(viewModel.githubAuthURLFull)
         }
     }
@@ -92,9 +93,7 @@ class LoginActivity : AppCompatActivity() {
             if (url.contains("code")) {
                 val githubCode = uri.getQueryParameter("code") ?: ""
                 viewModel.getAccessToken(code = githubCode)
-                binding.mainLayout.showSpinnerExtension()
-                //requestForAccessToken(githubCode)
-            }
+             }
         }
     }
 
@@ -102,10 +101,11 @@ class LoginActivity : AppCompatActivity() {
         viewModel.resultType.observe(this) {
             if (it == EResultType.SUCCESS) {
                 // go to activity
-                    
-                val intent = Intent(this, SearchActivity::class.java)
-                startActivity(intent)
 
+                val intent = Intent(this, SearchActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                this.finish()
             } else if (it == EResultType.ERROR) {
                 // error
             }
