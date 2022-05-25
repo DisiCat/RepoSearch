@@ -43,12 +43,12 @@ class SearchActivity : AppCompatActivity() {
             )
         }
 
-        adapter.addLoadStateListener { state ->
+    /*    adapter.addLoadStateListener { state ->
             with(binding) {
                 recyclerView.isVisible = state.refresh != LoadState.Loading
                 progress.isVisible = state.refresh == LoadState.Loading
             }
-        }
+        }*/
 
         addRepeatingJob(Lifecycle.State.STARTED) {
             viewModel.repositories.collectLatest(
