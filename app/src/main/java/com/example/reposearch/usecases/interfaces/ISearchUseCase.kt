@@ -5,4 +5,5 @@ import com.example.reposearch.data.RepositoryModel
 
 interface ISearchUseCase {
     operator fun invoke(nameRepo: String): PagingSource<Int, RepositoryModel>
+    fun saveRepositoryInStorage(repository: RepositoryModel)
 }

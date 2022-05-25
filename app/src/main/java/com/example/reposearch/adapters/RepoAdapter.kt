@@ -11,9 +11,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.reposearch.R
 import com.example.reposearch.data.RepositoryModel
 import com.example.reposearch.databinding.RepositoryItemLayoutBinding
-import com.example.reposearch.setSafeOnClickListener
+import com.example.reposearch.utils.setSafeOnClickListener
 
-class RepoAdapter( private val itemClickListener: (String?) -> Unit, context: Context) :
+class RepoAdapter(private val itemClickListener: (String?, Int) -> Unit, context: Context) :
     PagingDataAdapter<RepositoryModel, RepoViewHolder>(RepositoryDiffItemCallback) {
 
     private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
@@ -27,25 +27,40 @@ class RepoAdapter( private val itemClickListener: (String?) -> Unit, context: Co
     }
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
-        holder.itemView.setSafeOnClickListener { itemClickListener(getItem(position)?.repo_url) }
+        holder.itemView.setSafeOnClickListener {
+            itemClickListener(
+                getItem(position)?.repo_url,
+                position
+            )
+        }
         holder.bind(getItem(position))
 
     }
 
-
-}
-
-class RepoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val _viewBinding by viewBinding(RepositoryItemLayoutBinding::bind)
-
-    fun bind(repository: RepositoryModel?) {
-        with(_viewBinding){
-            nameRepoTextView.text = repository?.name
-            countStarTextView.text = repository?.star_count.toString()
-        }
+    fun getRepo(pos: Int): RepositoryModel? {
+        return this.snapshot()[pos]
     }
 }
 
+class RepoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private val _viewBinding by viewBinding(RepositoryItemLayoutBinding::bind)
+
+    fun bind(repository: RepositoryModel?) {
+
+        repository?.let {
+            with(_viewBinding) {
+                nameRepoTextView.text = repository.name
+                countStarTextView.text = repository.star_count.toString()
+
+                if (repository.isRead) {
+                    eyeImageView.visibility = View.VISIBLE
+                } else {
+                    eyeImageView.visibility = View.GONE
+                }
+            }
+        }
+    }
+}
 
 private object RepositoryDiffItemCallback : DiffUtil.ItemCallback<RepositoryModel>() {
 
@@ -53,7 +68,11 @@ private object RepositoryDiffItemCallback : DiffUtil.ItemCallback<RepositoryMode
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: RepositoryModel, newItem: RepositoryModel): Boolean {
+    override fun areContentsTheSame(
+        oldItem: RepositoryModel,
+        newItem: RepositoryModel
+    ): Boolean {
         return oldItem.name == newItem.name && oldItem.star_count == newItem.star_count
     }
+
 }

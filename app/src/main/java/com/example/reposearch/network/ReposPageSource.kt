@@ -6,8 +6,6 @@ import com.example.reposearch.data.RepositoryModel
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
-import java.lang.Exception
-import javax.inject.Inject
 
 class ReposPageSource @AssistedInject constructor(
     private val repoRequester: IRepoRequester,

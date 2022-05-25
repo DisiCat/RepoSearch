@@ -17,8 +17,7 @@ import com.example.reposearch.AppDefaultValues
 import com.example.reposearch.R
 import com.example.reposearch.databinding.ActivityLoginBinding
 import com.example.reposearch.enums.EResultType
-import com.example.reposearch.setSafeOnClickListener
-import com.example.reposearch.showSpinnerExtension
+import com.example.reposearch.utils.setSafeOnClickListener
 import com.example.reposearch.viewModels.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val viewModel by lazy { ViewModelProvider(this).get(LoginViewModel::class.java) }
     lateinit var githubDialog: Dialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
@@ -38,6 +38,10 @@ class LoginActivity : AppCompatActivity() {
     private fun initListeners() {
         binding.buttonLoginGithub.setSafeOnClickListener {
             setupGithubWebViewDialog(viewModel.githubAuthURLFull)
+        }
+        binding.historyLayout.setSafeOnClickListener {
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -93,14 +97,13 @@ class LoginActivity : AppCompatActivity() {
             if (url.contains("code")) {
                 val githubCode = uri.getQueryParameter("code") ?: ""
                 viewModel.getAccessToken(code = githubCode)
-             }
+            }
         }
     }
 
     private fun initObserves() {
         viewModel.resultType.observe(this) {
             if (it == EResultType.SUCCESS) {
-                // go to activity
 
                 val intent = Intent(this, SearchActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)

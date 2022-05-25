@@ -1,21 +1,19 @@
 package com.example.reposearch.viewModels
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.example.reposearch.data.RepositoryModel
-import com.example.reposearch.usecases.SearchUseCase
 import com.example.reposearch.usecases.interfaces.ISearchUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Provider
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val searchUseCaseProvider: Provider<ISearchUseCase>
+    private val searchUseCaseProvider: Provider<ISearchUseCase>,
+    private val searchUseCase: ISearchUseCase
 ) : ViewModel() {
     private val _repoName = MutableStateFlow("")
     val repoName: StateFlow<String> = _repoName.asStateFlow()
@@ -36,7 +34,17 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-    fun setNameRepo(name : String){
+    fun setNameRepo(name: String) {
         _repoName.tryEmit(name)
     }
+
+    fun saveCurrentReposInShared(repository: RepositoryModel?) {
+        repository?.let {
+            if (!repository.isRead) {
+                searchUseCase.saveRepositoryInStorage(repository)
+            }
+        }
+
+    }
+
 }

@@ -12,6 +12,8 @@ import com.example.reposearch.usecases.SearchUseCase
 import com.example.reposearch.usecases.interfaces.ILoginObserverUseCase
 import com.example.reposearch.usecases.interfaces.ISearchUseCase
 import com.example.reposearch.usecases.observerUseCases.LoginObserverUseCase
+import com.example.reposearch.utils.ISharedPreferencesUtils
+import com.example.reposearch.utils.SharedPreferencesUtils
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -44,4 +46,8 @@ abstract class AppInterfacesModule {
     //requester
     @Binds
     abstract fun bindRepoRequester(impl: RepoRequester): IRepoRequester
+
+    //utils
+    @Binds
+    abstract fun bindSharedPreferenceUtils(impl: SharedPreferencesUtils) : ISharedPreferencesUtils
 }

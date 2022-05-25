@@ -10,4 +10,6 @@ object AppDefaultValues {
     const val API_URL = "https://api.github.com/"
     const val REPO_URL = "https://api.github.com/search/repositories"
     const val PAGE_COUNT = 15
+    const val APP_LOCAL_STORAGE: String = "app_local_storage"
+    const val REPOSITORIES_LIST = "repositories_list"
 }
