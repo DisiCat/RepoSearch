@@ -6,6 +6,8 @@ import com.example.reposearch.repository.interfaces.ILoginRepository
 import com.example.reposearch.repository.LoginRepository
 import com.example.reposearch.repository.SearchRepository
 import com.example.reposearch.repository.interfaces.ISearchRepository
+import com.example.reposearch.requesters.IRepoRequester
+import com.example.reposearch.requesters.RepoRequester
 import com.example.reposearch.usecases.interfaces.ILoginUseCase
 import com.example.reposearch.usecases.LoginUseCase
 import com.example.reposearch.usecases.SearchUseCase

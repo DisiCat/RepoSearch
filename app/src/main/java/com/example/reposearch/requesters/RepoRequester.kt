@@ -1,9 +1,10 @@
-package com.example.reposearch.network
+package com.example.reposearch.requesters
 
 import com.example.reposearch.AppDefaultValues
 import com.example.reposearch.data.RepositoryModel
 import com.example.reposearch.data.parseModels.Items
 import com.example.reposearch.data.parseModels.Repositories
+import com.example.reposearch.network.RestApiService
 import com.example.reposearch.toRepositoryModel
 import com.example.reposearch.utils.ISharedPreferencesUtils
 import kotlinx.coroutines.Dispatchers

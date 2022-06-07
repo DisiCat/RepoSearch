@@ -1,4 +1,4 @@
-package com.example.reposearch.network
+package com.example.reposearch.requesters
 
 import com.example.reposearch.data.RepositoryModel
 

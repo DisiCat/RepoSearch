@@ -3,6 +3,7 @@ package com.example.reposearch.network
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.reposearch.data.RepositoryModel
+import com.example.reposearch.requesters.IRepoRequester
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
