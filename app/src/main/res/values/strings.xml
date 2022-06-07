@@ -6,4 +6,7 @@
     <string name="history">History</string>
     <string name="profile">Profile</string>
     <string name="back_pressed_text">Please press BACK again to exit</string>
+    <string name="github_repository">GitHub Repository</string>
+
+    <string name="language">Language: %s</string>
 </resources>
